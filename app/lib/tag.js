@@ -74,11 +74,7 @@ exports.upsertTagDescriptionByProjectIdAndTag = async (projectId, tag, descripti
     Logger.debug(`Updating the release note`);
     return Gitlab.updateTagReleaseByProjectIdTagNameAndTagId(projectId, tag.name, { description });
   } else {
-    Logger.debug(`Creating a new release note`);
-    Logger.debug(`projectId`);
-    Logger.debug(projectId);
-    Logger.debug(`tag`);
-    Logger.debug(tag.name);
-    return Gitlab.createTagReleaseByProjectIdTagNameAndTagId(projectId, tag.name, { description });
+    Logger.debug(`Creating a new release note by ecedi`);
+    return Gitlab.createTagReleaseByProjectIdTagNameAndTagId(projectId, tag.name, {'tag_name' : tag.name ,'description': description });
   }
 };
