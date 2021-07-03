@@ -72,7 +72,7 @@ exports.getLatestTagByProjectId = async (projectId) => {
 exports.upsertTagDescriptionByProjectIdAndTag = async (projectId, tag, description) => {
   if (_.get(tag, "release.description")) {
     Logger.debug(`Updating the release note`);
-    return Gitlab.updateTagReleaseByProjectIdTagNameAndTagId(projectId, tag.name, { description });
+    return Gitlab.updateTagReleaseByProjectIdTagNameAndTagId(projectId, tag.name, {'description' : description });
   } else {
     Logger.debug(`Creating a new release note by ecedi`);
     return Gitlab.createTagReleaseByProjectIdTagNameAndTagId(projectId, tag.name, {'tag_name' : tag.name ,'description': description });
